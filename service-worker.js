@@ -3,9 +3,10 @@ const CACHE_NAME = "salsabil-v2";
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
-  "./manifest.json"
+  "./manifest.json",
+  "./service-worker.js",
   "./icon-192.png",
-"./icon-512.png",
+  "./icon-512.png"
 ];
 
 self.addEventListener("install", (event) => {
