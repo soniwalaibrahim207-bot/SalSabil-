@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SalSabil | سلسبیل</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f9d58">
+
+  <!-- Urdu Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --green:#0f9d58;
+      --green2:#0bbf6a;
+      --dark:#06140d;
+      --light:#f3fff8;
+      --text:#1c2a22;
+      --card:#ffffff;
+      --shadow: 0 18px 40px rgba(0,0,0,.12);
+      --shadow2: 0 10px 24px rgba(0,0,0,.08);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family: Arial, Helvetica, sans-serif;}
+    body{background:var(--light); color:var(--text); overflow-x:hidden;}
+
+    header{
+      position: sticky; top:0; z-index:999;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .nav{
+      max-width: 1100px;
+      margin:auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color: var(--dark);
+    }
+    .logo{
+      width:46px;height:46px;border-radius:16px;
+      background: linear-gradient(135deg,var(--green),var(--green2));
+      box-shadow: 0 16px 30px rgba(15,157,88,.25);
+      display:flex; align-items:center; justify-content:center;
+      color:white; font-weight:900; letter-spacing:1px;
+      position:relative; overflow:hidden;
+    }
+    .logo::after{
+      content:""; position:absolute; inset:-30px;
+      background: radial-gradient(circle at top left, rgba(255,255,255,.35), transparent 55%);
+      transform: rotate(15deg);
+    }
+    .logo span{position:relative; z-index:1;}
+    .brand h1{font-size:18px; line-height:1;}
+    .brand small{font-size:12px; color:#3c6550;}
+    .menu{display:flex; gap:18px; align-items:center;}
+    .menu a{
+      text-decoration:none;
+      color:#244334;
+      font-weight:800;
+      font-size:14px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      transition:.2s ease;
+    }
+    .menu a:hover{
+      background: rgba(15,157,88,.12);
+      color: var(--green);
+    }
+
+    .btn{
+      padding: 11px 14px;
+      border-radius: 14px;
+      border:none; cursor:pointer;
+      font-weight:900;
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg,var(--green),var(--green2));
+      color:white;
+      box-shadow: 0 14px 30px rgba(15,157,88,.25);
+    }
+    .btn-primary:hover{transform: translateY(-2px);}
+    .btn-outline{
+      background:white;
+      border:1px solid rgba(0,0,0,.12);
+      color:#244334;
+    }
+
+    /* HERO */
+    .hero-wrap{position:relative;}
+    .leaf-bg{
+      position:absolute; inset:0; z-index:-1;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(15,157,88,.18), transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(11,191,106,.12), transparent 55%),
+        radial-gradient(circle at 40% 80%, rgba(15,157,88,.10), transparent 60%);
+    }
+    .hero{
+      max-width:1100px; margin:auto;
+      padding: 48px 18px 16px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:24px;
+      align-items:center;
+    }
+    .tag{
+      display:inline-flex; gap:8px; align-items:center;
+      background: rgba(15,157,88,.1);
+      color: var(--green);
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight:900;
+      font-size:13px;
+      width: fit-content;
+    }
+    .hero h2{
+      margin-top: 12px;
+      font-size: 42px;
+      line-height: 1.12;
+      color: var(--dark);
+    }
+    .hero p{
+      margin-top: 14px;
+      font-size: 15px;
+      color:#3f5c4c;
+      line-height: 1.75;
+      max-width: 580px;
+    }
+    .hero-actions{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-card{
+      background: white;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-60px;
+      background: radial-gradient(circle at top left, rgba(15,157,88,.24), transparent 60%);
+      transform: rotate(15deg);
+    }
+    .hero-card-inner{
+      position:relative;
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.06);
+      padding: 16px;
+    }
+
+    .urdu{direction: rtl;font-family: "Noto Nastaliq Urdu", serif;}
+    .hero-card h3{font-size: 24px;margin-bottom: 8px;color: var(--dark);}
+    .sub{color:#4c6b5a;font-size: 14px;line-height: 1.9;}
+    .stats{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .stat-box{
+      background: rgba(15,157,88,.08);
+      border: 1px solid rgba(15,157,88,.15);
+      padding: 12px;
+      border-radius: 14px;
+    }
+    .stat-box b{font-size: 16px;color: var(--green);display:block;}
+    .stat-box small{color:#345343;}
+
+    /* SLIDER */
+    .slider{max-width: 1100px;margin: 0 auto;padding: 10px 18px 0;}
+    .slider-box{
+      background: white;border-radius: 22px;box-shadow: var(--shadow);
+      overflow:hidden;border: 1px solid rgba(0,0,0,.06);position:relative;
+    }
+    .slide{display:none;padding: 22px;min-height: 250px;}
+    .slide.active{display:grid;}
+    .slide-grid{display:grid;grid-template-columns: 1.1fr .9fr;gap: 18px;align-items:center;}
+    .slide h3{font-size: 26px;color: var(--dark);}
+    .slide p{margin-top: 10px;color:#476252;line-height:1.8;}
+    .slide .badge{
+      display:inline-block;margin-bottom: 10px;padding: 8px 12px;border-radius: 999px;
+      background: rgba(15,157,88,.12);color: var(--green);font-weight: 900;font-size: 13px;
+    }
+    .slide-img{
+      width:100%;
+      height: 200px;
+      border-radius: 20px;
+      border: 1px dashed rgba(15,157,88,.35);
+      background: linear-gradient(135deg, rgba(15,157,88,.18), rgba(11,191,106,.12));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color:#1b6a43;
+    }
+    .slide-nav{
+      position:absolute;
+      inset:auto 0 0 0;
+      display:flex;
+      justify-content:space-between;
+      padding: 12px;
+    }
+    .slide-nav button{
+      width: 44px;height: 44px;border-radius: 16px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: rgba(255,255,255,.95);
+      cursor:pointer;
+      font-size: 18px;
+      font-weight: 900;
+      transition: .2s ease;
+    }
+    .slide-nav button:hover{transform: translateY(-2px);}
+
+    section{max-width:1100px; margin:auto; padding: 26px 18px;}
+    .section-title{
+      display:flex;align-items:end;justify-content:space-between;gap: 10px;margin-bottom: 14px;
+    }
+    .section-title h4{font-size: 24px;color: var(--dark);}
+    .section-title p{color:#4c6b5a;max-width: 520px;font-size: 14px;line-height:1.7;}
+
+    /* GRID */
+    .grid{display:grid;grid-template-columns: repeat(2, 1fr);gap: 14px;}
+    .card{
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow2);
+      padding: 14px;
+      border: 1px solid rgba(0,0,0,.06);
+      transition: .2s ease;
+    }
+    .card:hover{transform: translateY(-3px);}
+
+    .product-img{
+      width:100%;
+      height: 160px;
+      border-radius: 18px;
+      border: 1px dashed rgba(15,157,88,.35);
+      background: linear-gradient(135deg, rgba(15,157,88,.18), rgba(11,191,106,.10));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color:#1b6a43;
+      margin-bottom: 12px;
+    }
+    .card h5{font-size: 15px;color: var(--dark);}
+    .card p{font-size: 13px;color:#4a6a58;margin-top:8px;line-height:1.6;}
+    .price{margin-top: 10px;font-weight: 900;color: var(--green);font-size: 15px;}
+
+    .box{
+      background:white;border-radius: 18px;padding: 18px;
+      box-shadow: var(--shadow2);border: 1px solid rgba(0,0,0,.06);
+    }
+
+    input, textarea{
+      width:100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.12);
+      outline: none;
+      font-size: 14px;
+      margin-top:10px;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding: 18px 18px;
+      background: #06140d;
+      color: rgba(255,255,255,.78);
+      text-align:center;
+    }
+    footer b{color:white;}
+
+    /* FLOAT BUTTONS */
+    .float-btns{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      z-index: 9999;
+    }
+    .float{
+      width: 52px;height: 52px;border-radius: 16px;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: var(--shadow);
+      font-size: 22px;
+      text-decoration:none;
+      color:white;
+      font-weight: 900;
+      transition: .2s ease;
+    }
+    .float:hover{transform: translateY(-3px);}
+    .wa{background: #25D366;}
+    .ig{background: #E1306C;}
+
+    /* CART */
+    .cart-btn{
+      position: fixed;left: 16px;bottom: 16px;z-index: 9999;
+      display:flex;align-items:center;gap:10px;
+      padding: 12px 14px;border-radius: 16px;
+      background: #0b1f13;color:#fff;font-weight:900;border:none;cursor:pointer;
+      box-shadow: 0 18px 40px rgba(0,0,0,.2);
+    }
+    .cart-count{
+      background: linear-gradient(135deg,var(--green),var(--green2));
+      padding: 6px 10px;border-radius: 999px;font-size: 12px;
+    }
+    .cart-drawer{
+      position: fixed;top:0;right:-420px;width: 360px;height: 100vh;
+      background: white;z-index: 99999;
+      box-shadow: -20px 0 50px rgba(0,0,0,.18);
+      transition: .25s ease;
+      display:flex;flex-direction:column;
+    }
+    .cart-drawer.open{ right:0; }
+    .cart-header{
+      padding: 16px;border-bottom: 1px solid rgba(0,0,0,.08);
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .cart-header h3{font-size:18px;color:var(--dark);}
+    .close-cart{
+      border:none;background: rgba(0,0,0,.08);border-radius: 12px;
+      padding: 10px 12px;cursor:pointer;font-weight:900;
+    }
+    .cart-body{padding: 12px 16px;overflow:auto;flex:1;}
+    .cart-item{
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding:  12px;
+      margin-bottom: 10px;
+    }
+    .cart-item b{display:block;color:var(--dark);}
+    .cart-item small{color:#476252;font-weight:700;}
+    .cart-row{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:8px;
+    }
+    .qty{display:flex; align-items:center; gap:10px;}
+    .qty button{
+      width:34px;height:34px;border-radius:12px;
+      border:1px solid rgba(0,0,0,.12);
+      background:white;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .qty span{font-weight:900;}
+    .item-price{font-weight:900;color:var(--green);}
+    .cart-footer{
+      padding: 14px 16px;
+      border-top: 1px solid rgba(0,0,0,.08);
+    }
+    .total{
+      display:flex;justify-content:space-between;
+      font-weight:900;color:var(--dark);
+      margin-bottom: 10px;
+    }
+    .checkout{
+      width:100%;
+      padding: 12px 14px;
+      border:none;
+      cursor:pointer;
+      border-radius: 16px;
+      font-weight:900;
+      color:white;
+      background: linear-gradient(135deg,#25D366,#128C7E);
+    }
+    .clearcart{
+      width:100%;
+      margin-top:10px;
+      padding: 12px 14px;
+      border:1px solid rgba(0,0,0,.12);
+      cursor:pointer;
+      border-radius: 16px;
+      font-weight:900;
+      background:white;
+    }
+
+    /* COUPON PREMIUM */
+    .coupon-box{
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(15,157,88,.08);
+      border: 1px solid rgba(15,157,88,.18);
+    }
+    .coupon-row{display:flex;gap:10px;}
+    .coupon-row input{margin-top:0;}
+    .coupon-btn{
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight:900;
+      border:none;
+      cursor:pointer;
+      color:white;
+      background: linear-gradient(135deg,#0f9d58,#0bbf6a);
+    }
+    #couponMsg{margin-top:8px;font-weight:900;}
+    .msg-ok{color:#0f9d58;}
+    .msg-bad{color:#c0392b;}
+
+    /* ANIMATION */
+    .shake{animation: shake .35s ease;}
+    @keyframes shake{
+      0%{transform: translateX(0);}
+      25%{transform: translateX(-6px);}
+      50%{transform: translateX(6px);}
+      75%{transform: translateX(-4px);}
+      100%{transform: translateX(0);}
+    }
+
+    @media(max-width: 900px){
+      .hero{grid-template-columns: 1fr;}
+      .menu{display:none;}
+      .slide-grid{grid-template-columns: 1fr;}
+    }
+    @media(max-width: 450px){
+      .cart-drawer{width: 100%;}
+      .grid{grid-template-columns: 1fr;}
+      .coupon-row{flex-direction:column;}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#">
+      <div class="logo"><span>SS</span></div>
+      <div>
+        <h1>SalSabil</h1>
+        <small>سلسبیل • Natural & Pure</small>
+      </div>
+    </a>
+
+    <div class="menu">
+      <a href="#products">Products</a>
+      <a href="#payment">Payment</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      Contact Now
+    </button>
+  </div>
+</header>
+
+<div class="hero-wrap">
+  <div class="leaf-bg"></div>
+
+  <div class="hero">
+    <div>
+      <div class="tag">🌿 100% Natural • Pure • Trusted</div>
+      <h2>SalSabil – Premium Natural Sharbat</h2>
+      <p>
+        Select products, add to cart, and order directly on WhatsApp.
+        India + International delivery available ✅
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">View Products</button>
+        <button class="btn btn-outline" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">Payment Info</button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-inner">
+        <h3 class="urdu">سلسبیل</h3>
+        <p class="sub urdu">
+          سلسبیل ایک معیاری، خوبصورت اور قدرتی شربت برانڈ ہے۔
+          ہم صفائی، معیار اور اعتماد کو ترجیح دیتے ہیں۔
+        </p>
+
+        <div class="stats">
+          <div class="stat-box"><b>Premium</b><small>Quality</small></div>
+          <div class="stat-box"><b>Fast</b><small>Support</small></div>
+          <div class="stat-box"><b>Trusted</b><small>Brand</small></div>
+          <div class="stat-box"><b>Pure</b><small>Natural</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slider -->
+<div class="slider">
+  <div class="slider-box">
+
+    <div class="slide active">
+      <div class="slide-grid">
+        <div>
+          <div class="badge">🌹 Best Seller</div>
+          <h3>Sharbat: Gulab</h3>
+          <p>Refreshing rose sharbat — premium taste & purity.</p>
+          <button class="btn btn-primary" onclick="addToCart('Sharbat: Gulab',169)">Add to Cart (₹169)</button>
+        </div>
+        <div class="slide-img">SalSabil Product Image</div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-grid">
+        <div>
+          <div class="badge">🌿 Summer Special</div>
+          <h3>Sharbat: Khus</h3>
+          <p>Cool & fresh khus sharbat — perfect for summer.</p>
+          <button class="btn btn-primary" onclick="addToCart('Sharbat: Khus',169)">Add to Cart (₹169)</button>
+        </div>
+        <div class="slide-img">SalSabil Product Image</div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-grid">
+        <div>
+          <div class="badge">✨ Premium</div>
+          <h3>Sharbat: Kesar</h3>
+          <p>Rich aroma and royal taste — kesar sharbat.</p>
+          <button class="btn btn-primary" onclick="addToCart('Sharbat: Kesar',299)">Add to Cart (₹299)</button>
+        </div>
+        <div class="slide-img">SalSabil Product Image</div>
+      </div>
+    </div>
+
+    <div class="slide">
+      <div class="slide-grid">
+        <div>
+          <div class="badge">💛 Healthy</div>
+          <h3>Sharbat: Amla</h3>
+          <p>Healthy amla sharbat — natural goodness.</p>
+          <button class="btn btn-primary" onclick="addToCart('Sharbat: Amla',219)">Add to Cart (₹219)</button>
+        </div>
+        <div class="slide-img">SalSabil Product Image</div>
+      </div>
+    </div>
+
+    <div class="slide-nav">
+      <button onclick="prevSlide()">‹</button>
+      <button onclick="nextSlide()">›</button>
+    </div>
+
+  </div>
+</div>
+
+<section id="products">
+  <div class="section-title">
+    <h4>Our Products</h4>
+    <p>Click “Add to Cart” and order easily via WhatsApp.</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div style="margin:14px 0;">
+    <input
+      id="searchBox"
+      type="text"
+      placeholder="Search product... (Gulab, Khus, Kesar, Amla)"
+      style="width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(0,0,0,.12); outline:none;"
+      onkeyup="searchProducts()"
+    />
+  </div>
+
+  <div class="grid" id="productGrid">
+    <div class="card" data-name="gulab sharbat rose">
+      <div class="product-img">Product Image</div>
+      <h5>Sharbat: Gulab</h5>
+      <p>Refreshing rose sharbat with premium taste & purity.</p>
+      <div class="price">₹169</div>
+      <button class="btn btn-primary" onclick="addToCart('Sharbat: Gulab',169)">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="khus sharbat">
+      <div class="product-img">Product Image</div>
+      <h5>Sharbat: Khus</h5>
+      <p>Cool & fresh khus sharbat, perfect for summer.</p>
+      <div class="price">₹169</div>
+      <button class="btn btn-primary" onclick="addToCart('Sharbat: Khus',169)">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="kesar sharbat saffron">
+      <div class="product-img">Product Image</div>
+      <h5>Sharbat: Kesar</h5>
+      <p>Premium kesar sharbat with rich flavor & aroma.</p>
+      <div class="price">₹299</div>
+      <button class="btn btn-primary" onclick="addToCart('Sharbat: Kesar',299)">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="amla sharbat">
+      <div class="product-img">Product Image</div>
+      <h5>Sharbat: Amla</h5>
+      <p>Healthy amla sharbat with natural goodness.</p>
+      <div class="price">₹219</div>
+      <button class="btn btn-primary" onclick="addToCart('Sharbat: Amla',219)">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="kumarpatta halwa">
+      <div class="product-img">Product Image</div>
+      <h5>Halwa: Kumarpatta (500 gm)</h5>
+      <p>Premium kumarpatta halwa — natural ingredients.</p>
+      <div class="price">₹600</div>
+      <button class="btn btn-primary" onclick="addToCart('Halwa: Kumarpatta (500 gm)',600)">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="haldi halwa">
+      <div class="product-img">Product Image</div>
+      <h5>Halwa: Haldi (500 gm)</h5>
+      <p>Healthy haldi halwa — perfect for immunity.</p>
+      <div class="price">₹400</div>
+      <button class="btn btn-primary" onclick="addToCart('Halwa: Haldi (500 gm)',400)">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="sohan halwa">
+      <div class="product-img">Product Image</div>
+      <h5>Halwa: Sohan (500 gm)</h5>
+      <p>Traditional sohan halwa — premium taste.</p>
+      <div class="price">₹200</div>
+      <button class="btn btn-primary" onclick="addToCart('Halwa: Sohan (500 gm)',200)">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<section id="payment">
+  <div class="section-title">
+    <h4>Payment Details</h4>
+    <p>Pay safely using UPI (India) or Bank Transfer (India/International).</p>
+  </div>
+
+  <div class="grid">
+    <div class="box">
+      <h3 style="color:#06140d;">✅ UPI Payment (India)</h3>
+    <p style="margin-top:10px;line-height:1.9;color:#3f5c4c;">
+        <b>UPI ID:</b> shaikhzayid25@oksbi <br>
+        <small style="font-weight:900;color:#2f5942;">
+          Payment ke baad screenshot WhatsApp par send karein ✅
+        </small>
+      </p>
+    </div>
+
+    <div class="box">
+      <h3 style="color:#06140d;">🏦 Bank Transfer (India / International)</h3>
+      <p style="margin-top:10px;line-height:1.9;color:#3f5c4c;">
+        <b>Bank:</b> Kotak Bank <br>
+        <b>Account Holder:</b> Soniwala Mubasshshera Mohmadyusuf <br>
+        <b>Account No:</b> 1848649888 <br>
+        <b>IFSC:</b> KKBK0000836
+      </p>
+      <p style="margin-top:10px;font-size:12px;color:#4a6a58;line-height:1.6;">
+        🌍 International customers: Bank transfer supported. Shipping charges confirmed as per country/city.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-title">
+    <h4>Gallery</h4>
+    <p>Product display and stall photos will be added later.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="product-img">Gallery Image</div>
+      <h5>SalSabil Stall</h5>
+      <p>Customer trust & real display.</p>
+    </div>
+
+    <div class="card">
+      <div class="product-img">Gallery Image</div>
+      <h5>Product Display</h5>
+      <p>Available flavours & variety.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title">
+    <h4>Contact Us</h4>
+    <p>Message and we will reply quickly.</p>
+  </div>
+
+  <div class="box">
+    <p><b>WhatsApp:</b> 9974668428</p>
+    <p><b>Instagram:</b> itz__zayid__shaikh</p>
+
+    <form onsubmit="event.preventDefault(); alert('✅ Message sent successfully!'); this.reset();">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button class="btn btn-primary" type="submit" style="margin-top:10px;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <b>SalSabil | سلسبیل</b> — All Rights Reserved.</p>
+</footer>
+
+<!-- Floating WhatsApp & Instagram -->
+<div class="float-btns">
+  <a class="float wa" href="https://wa.me/919974668428" target="_blank" title="WhatsApp">🟢</a>
+  <a class="float ig" href="https://instagram.com/itz__zayid__shaikh" target="_blank" title="Instagram">📷</a>
+</div>
+
+<!-- Floating Cart Button -->
+<button class="cart-btn" onclick="toggleCart()">
+  🛒 Cart <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- Cart Drawer -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button class="close-cart" onclick="toggleCart()">✖</button>
+  </div>
+
+  <div class="cart-body" id="cartItems">
+    <p style="color:#567565;font-weight:800;">Cart is empty</p>
+  </div>
+
+  <div class="cart-footer">
+    <div class="total">
+      <span>Total</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+
+    <div class="total" id="discountRow" style="display:none;">
+      <span>Discount</span>
+      <span id="discountShow">- ₹0</span>
+    </div>
+
+    <div class="total">
+      <span>Final Total</span>
+      <span id="finalTotalShow">₹0</span>
+    </div>
+
+    <!-- COUPON -->
+    <div class="coupon-box">
+      <div class="coupon-row">
+        <input id="couponInput" type="text" placeholder="Enter Coupon Code (SALSABIL10 / RAMZAN20)"
+          oninput="this.value=this.value.toUpperCase()">
+        <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
+      </div>
+      <p id="couponMsg"></p>
+    </div>
+
+    <button class="checkout" onclick="openDeliveryForm()">
+      Checkout (Delivery Details)
+    </button>
+
+    <button class="clearcart" onclick="clearCart()">Clear Cart</button>
+
+    <!-- STATUS -->
+    <div style="margin-top:12px;">
+      <p style="font-weight:900;color:#244334;margin-bottom:8px;">Delivery Status</p>
+      <button class="clearcart" onclick="sendStatus('Pending')">🟡 Pending</button>
+      <button class="clearcart" onclick="sendStatus('Shipped')">🟣 Shipped</button>
+      <button class="clearcart" onclick="sendStatus('Delivered')">🟢 Delivered</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delivery Form Modal -->
+<div id="deliveryModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:999999;">
+  <div style="max-width:520px; margin: 40px auto; background:white; border-radius:22px; padding:18px; box-shadow:0 20px 60px rgba(0,0,0,.25);">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+      <h3 style="margin:0; color:#06140d;">Delivery Details</h3>
+      <button onclick="closeDeliveryForm()" style="border:none; background:rgba(0,0,0,.08); border-radius:12px; padding:10px 12px; cursor:pointer; font-weight:900;">✖</button>
+    </div>
+
+    <p style="margin-top:8px; color:#3f5c4c; line-height:1.7;">
+      Fill delivery details. Your order will be sent to WhatsApp.
+    </p>
+
+    <div style="margin-top:12px;">
+      <input id="custName" type="text" placeholder="Full Name" required />
+      <input id="custPhone" type="text" placeholder="WhatsApp Number (+Country code)" required />
+
+      <select id="deliveryType" style="width:100%; margin-top:10px; padding:12px 14px; border-radius:14px; border:1px solid rgba(0,0,0,.12); font-size:14px;">
+        <option value="India Delivery">🇮🇳 India Delivery</option>
+        <option value="International Delivery">🌍 International Delivery</option>
+      </select>
+
+      <input id="country" type="text" placeholder="Country (e.g. UAE, Saudi, UK)" required />
+      <input id="city" type="text" placeholder="City" required />
+      <input id="pincode" type="text" placeholder="Postal/Zip Code" required />
+      <textarea id="address" rows="3" placeholder="Full Address + Landmark" required></textarea>
+
+      <select id="paymentMethod" style="width:100%; margin-top:10px; padding:12px 14px; border-radius:14px; border:1px solid rgba(0,0,0,.12); font-size:14px;">
+        <option value="UPI / Bank Transfer">✅ UPI / Bank Transfer</option>
+        <option value="Bank Transfer (International)">🌍 Bank Transfer (International)</option>
+      </select>
+
+      <button class="btn btn-primary" style="width:100%; margin-top:12px;" onclick="confirmDeliveryAndCheckout()">
+        Confirm & Send Order on WhatsApp
+      </button>
+
+      <p style="margin-top:10px; font-size:12px; color:#4a6a58; line-height:1.6;">
+        Note: 🌍 International shipping charges will be confirmed based on country/city.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- THANK YOU PAGE -->
+<div id="thankyouPage" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:999999;">
+  <div style="max-width:520px; margin: 60px auto; background:white; border-radius:22px; padding:20px; box-shadow:0 20px 60px rgba(0,0,0,.25); text-align:center;">
+
+    <div style="width:70px;height:70px;border-radius:22px;margin:0 auto 12px;
+      background:linear-gradient(135deg,#0f9d58,#0bbf6a);display:flex;align-items:center;justify-content:center;
+      color:white;font-size:34px;font-weight:900;">
+      ✓
+    </div>
+
+    <h2 style="color:#06140d;">Thank You!</h2>
+    <p style="margin-top:10px; color:#3f5c4c; line-height:1.8;">
+      Your order request has been sent on WhatsApp ✅<br>
+      We will confirm your delivery soon.
+    </p>
+
+    <p class="urdu" style="margin-top:12px; line-height:2; color:#2f5942;">
+      آپ کا آرڈر واٹس ایپ پر بھیج دیا گیا ہے ✅
+      ہم جلد آپ کے آرڈر کی تصدیق کریں گے۔
+    </p>
+
+    <div style="margin-top:16px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="closeThankYou()">Continue Shopping</button>
+      <a class="btn btn-outline" style="text-decoration:none;display:inline-block;"
+         href="https://instagram.com/itz__zayid__shaikh" target="_blank">Follow on Instagram</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const WHATSAPP_NUMBER = "919974668428";
+  let cart = [];
+
+  // COUPON
+  let couponCode = "";
+  let discountPercent = 0;
+
+  // CUSTOMER SAVE FOR STATUS
+  let lastCustomerNumber = "";
+  let lastOrderId = "";
+
+  function getNextOrderId(){
+    let last = localStorage.getItem("SS_LAST_ORDER") || "1000";
+    last = parseInt(last, 10) + 1;
+    localStorage.setItem("SS_LAST_ORDER", String(last));
+    return "SS-" + last;
+  }
+
+  function toggleCart(){
+    document.getElementById("cartDrawer").classList.toggle("open");
+  }
+
+  function addToCart(name, price){
+    const item = cart.find(i => i.name === name);
+    if(item){ item.qty += 1; }
+    else{ cart.push({name, price, qty: 1}); }
+
+    renderCart();
+    document.getElementById("cartDrawer").classList.add("open");
+  }
+
+  function changeQty(name, delta){
+    const item = cart.find(i => i.name === name);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0){
+      cart = cart.filter(i => i.name !== name);
+    }
+    renderCart();
+  }
+
+  function clearCart(){
+    cart = [];
+    couponCode = "";
+    discountPercent = 0;
+    const msg = document.getElementById("couponMsg");
+    if(msg) msg.innerHTML = "";
+    const input = document.getElementById("couponInput");
+    if(input) input.value = "";
+    renderCart();
+  }
+
+  function renderCart(){
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+    const discountRow = document.getElementById("discountRow");
+    const discountShow = document.getElementById("discountShow");
+    const finalTotalShow = document.getElementById("finalTotalShow");
+
+    let totalQty = cart.reduce((a,b)=>a+b.qty,0);
+    let totalAmt = cart.reduce((a,b)=>a+(b.price*b.qty),0);
+
+    let discountAmount = Math.round((totalAmt * discountPercent) / 100);
+    let finalTotal = totalAmt - discountAmount;
+
+    cartCount.innerText = totalQty;
+
+    cartTotal.innerText = "₹" + totalAmt;
+    finalTotalShow.innerText = "₹" + finalTotal;
+
+    if(discountPercent > 0){
+      discountRow.style.display = "flex";
+      discountShow.innerText = "- ₹" + discountAmount;
+    } else {
+      discountRow.style.display = "none";
+      discountShow.innerText = "- ₹0";
+    }
+
+    if(cart.length === 0){
+      cartItems.innerHTML = `<p style="color:#567565;font-weight:800;">Cart is empty</p>`;
+      return;
+    }
+
+    cartItems.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <b>${item.name}</b>
+        <small>₹${item.price} each</small>
+
+        <div class="cart-row">
+          <div class="qty">
+            <button onclick="changeQty('${item.name}',-1)">-</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty('${item.name}',1)">+</button>
+          </div>
+
+          <div class="item-price">₹${item.price * item.qty}</div>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  function applyCoupon(){
+    const input = document.getElementById("couponInput").value.trim().toUpperCase();
+    const msg = document.getElementById("couponMsg");
+
+    couponCode = "";
+    discountPercent = 0;
+
+    // Expiry for RAMZAN20 (change date if needed)
+    const today = new Date();
+    const ramzanExpiry = new Date("2026-04-10");
+
+    if(input === "SALSABIL10"){
+      couponCode = input;
+      discountPercent = 10;
+      msg.className = "msg-ok";
+      msg.innerHTML = "✅ Coupon Applied: 10% OFF";
+    }
+    else if(input === "RAMZAN20"){
+      if(today <= ramzanExpiry){
+        couponCode = input;
+        discountPercent = 20;
+        msg.className = "msg-ok";
+        msg.innerHTML = "✅ Ramzan Offer Applied: 20% OFF";
+      }else{
+        msg.className = "msg-bad";
+        msg.innerHTML = "❌ RAMZAN20 expired";
+      }
+    }
+    else{
+      msg.className = "msg-bad";
+      msg.innerHTML = "❌ Invalid Coupon Code";
+    }
+
+    renderCart();
+
+    // animation
+    const drawer = document.getElementById("cartDrawer");
+    drawer.classList.remove("shake");
+    setTimeout(()=> drawer.classList.add("shake"), 10);
+  }
+
+  function openDeliveryForm(){
+    if(cart.length === 0){
+      alert("Cart is empty!");
+      return;
+    }
+    document.getElementById("deliveryModal").style.display = "block";
+  }
+
+  function closeDeliveryForm(){
+    document.getElementById("deliveryModal").style.display = "none";
+  }
+
+  function openThankYou(){
+    document.getElementById("thankyouPage").style.display = "block";
+  }
+  function closeThankYou(){
+    document.getElementById("thankyouPage").style.display = "none";
+  }
+
+  function searchProducts(){
+    const q = document.getElementById("searchBox").value.toLowerCase().trim();
+    const cards = document.querySelectorAll("#products .card");
+
+    cards.forEach(card=>{
+      const name = (card.getAttribute("data-name") || "").toLowerCase();
+      if(name.includes(q) || q === ""){
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  function sendStatus(status){
+    if(!lastCustomerNumber){
+      alert("Customer number not found. Please checkout once first!");
+      return;
+    }
+
+    let msg =
+      "━━━━━━━━━━━━━━━━━━━━%0A" +
+      "📦 *SALSABIL ORDER STATUS*%0A" +
+      "━━━━━━━━━━━━━━━━━━━━%0A%0A";
+
+    if(lastOrderId){
+      msg += `🆔 Order ID: ${lastOrderId}%0A`;
+    }
+    msg += `✅ Status: *${status}*%0A%0A`;
+    msg += "JazakAllah for choosing SalSabil 🌿";
+
+    window.open(`https://wa.me/${lastCustomerNumber}?text=${msg}`, "_blank");
+  }
+
+  function confirmDeliveryAndCheckout(){
+    const name = document.getElementById("custName").value.trim();
+    const phone = document.getElementById("custPhone").value.trim();
+    const dtype = document.getElementById("deliveryType").value;
+    const country = document.getElementById("country").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const pincode = document.getElementById("pincode").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const payment = document.getElementById("paymentMethod").value;
+
+    if(!name || !phone || !country || !city || !pincode || !address){
+      alert("Please fill all delivery details!");
+      return;
+    }
+
+    // Save customer number for status update
+    lastCustomerNumber = phone.replace(/\D/g,''); // digits only
+
+    // Order ID
+    const orderId = getNextOrderId();
+    lastOrderId = orderId;
+    const orderDate = new Date().toLocaleString();
+
+    let totalAmt = cart.reduce((a,b)=>a+(b.price*b.qty),0);
+    let discountAmount = Math.round((totalAmt * discountPercent) / 100);
+    let finalTotal = totalAmt - discountAmount;
+
+    // INVOICE MESSAGE
+    let msg = "━━━━━━━━━━━━━━━━━━━━%0A";
+    msg += "🧾 *SALSABIL INVOICE*%0A";
+    msg += "━━━━━━━━━━━━━━━━━━━━%0A%0A";
+
+    msg += `🆔 *Order ID:* ${orderId}%0A`;
+    msg += `🕒 *Date:* ${orderDate}%0A%0A`;
+
+    msg += "📦 *Order Items*%0A";
+    msg += "--------------------%0A";
+
+    cart.forEach((item, index) => {
+      msg += `${index+1}) ${item.name}%0A`;
+      msg += `   Qty: ${item.qty}  |  Price: ₹${item.price}%0A`;
+      msg += `   Subtotal: ₹${item.price*item.qty}%0A%0A`;
+    });
+
+    msg += "--------------------%0A";
+    msg += `🧾 *Total:* ₹${totalAmt}%0A`;
+
+    if(discountPercent > 0){
+      msg += `🎁 *Coupon:* ${couponCode} (${discountPercent}% OFF)%0A`;
+      msg += `💸 *Discount:* -₹${discountAmount}%0A`;
+    }
+
+    msg += `✅ *Final Total:* ₹${finalTotal}%0A%0A`;
+
+    msg += "━━━━━━━━━━━━━━━━━━━━%0A";
+    msg += "🚚 *Delivery Details*%0A";
+    msg += "━━━━━━━━━━━━━━━━━━━━%0A";
+    msg += `👤 Name: ${name}%0A`;
+    msg += `📱 WhatsApp: ${phone}%0A`;
+    msg += `📦 Delivery Type: ${dtype}%0A`;
+    msg += `🌍 Country: ${country}%0A`;
+    msg += `🏙️ City: ${city}%0A`;
+    msg += `🏷️ Postal/Zip: ${pincode}%0A`;
+    msg += `📍 Address: ${address}%0A%0A`;
+
+    msg += "━━━━━━━━━━━━━━━━━━━━%0A";
+    msg += "💳 *Payment Method*%0A";
+    msg += "━━━━━━━━━━━━━━━━━━━━%0A";
+    msg += `${payment}%0A%0A`;
+
+    msg += "✅ *Payment Details (SalSabil)*%0A";
+    msg += "UPI ID: shaikhzayid25@oksbi%0A%0A";
+    msg += "🏦 Bank: Kotak Bank%0A";
+    msg += "Account Holder: Soniwala Mubasshshera Mohmadyusuf%0A";
+    msg += "Account No: 1848649888%0A";
+    msg += "IFSC: KKBK0000836%0A%0A";
+
+    msg += "🌍 International shipping charges will be confirmed as per country/city.%0A";
+    msg += "📸 Payment ke baad screenshot WhatsApp par send karein.%0A%0A";
+    msg += "✨ Please confirm my order. JazakAllah!%0A";
+    msg += "━━━━━━━━━━━━━━━━━━━━";
+
+    closeDeliveryForm();
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+
+    openThankYou();
+    clearCart();
+    if(document.getElementById("cartDrawer").classList.contains("open")) toggleCart();
+  }
+
+  renderCart();
+
+  // SLIDER
+  let currentSlide = 0;
+  function showSlide(index){
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach(s => s.classList.remove("active"));
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
+  function nextSlide(){ showSlide(currentSlide + 1); }
+  function prevSlide(){ showSlide(currentSlide - 1); }
+  setInterval(() => { nextSlide(); }, 4000);
+</script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script>
+
+</body>
+</html>
